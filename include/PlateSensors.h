@@ -4,14 +4,15 @@
 class PlateSensors{
 public:
     PlateSensors();
-    Init();
-    float* ReadAll();
-    float Read(const int& temp)
-
-
+    void Init();
+    void Read();
+    float GetTemp(const int &temp);
+    float* GetAllTemp();
 private:
-    volatile float fWeight;
-    volatile float temperatures[3]={0,0,0};
+    volatile float fWeight=0.1;
+    float temperatures[3]={0,0,0};
+    uint8_t tempPins[3]={A6,A8,A7};
     volatile float tempSP = 0;
     volatile float TempSetPoint;
-}
+    volatile float aValue=1024;
+};

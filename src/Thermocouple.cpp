@@ -13,8 +13,11 @@ void Thermocouple::Init(){
     this->TC_CH.Tcorr=0;
 }
 
-const TC_Data& Thermocouple::Read(){
-    
+const TC_Data& Thermocouple::GetTemp(){
+    return this->data;
+}
+
+const TC_Data& Thermocouple::Read(){  
     this->ptr=&this->TC_CH;
     this->thermocouple.MAX31855_update(this->ptr);
     this->data.ReferenceTemp=(double)this->TC_CH.ref_jcn_temp*0.0625;
